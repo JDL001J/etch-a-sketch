@@ -1,0 +1,47 @@
+.grid{
+    height: 300px;
+    width: 300px;
+    border: 2px solid black;
+    cursor: crosshair;
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.container {
+    border: 2px solid black;
+    
+}
+h2{
+    text-align: center;
+}
+.grid-box {
+    display: flex;
+   justify-content: center;
+}
+
+.settings {
+    height: 300px;
+    border: 2px solid black;
+  
+  
+}
+
+.size{
+    width: 40px;
+}
+
+input{
+    cursor: pointer;
+}
+
+#settings-label{
+    border: 1px solid black;
+    margin-bottom: 2px;
+    text-align: center;
+}
+.item{
+    border: 1px solid black;
+}
+.item:hover{
+    background-color: aqua;
+}
