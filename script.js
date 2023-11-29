@@ -2,7 +2,9 @@ grid = document.querySelector('.grid')
 size = document.querySelector(".size");
 btn = document.querySelector('.btn');
 color = document.querySelector(".color-wheel");
+eraserBtn = document.querySelector('.eraser');
 draw = false;
+eraser = false;
 
 
 
@@ -20,12 +22,8 @@ function createItems(){
 }
 
 function getSize(){
-    
     // gridSize = size.value;
     gridSize = 900;
-   
-
-   
     return gridSize
 }
 
@@ -38,7 +36,7 @@ function createGrid(){
     div.classList.add("item");
    
     grid.appendChild(div);
-    }
+  }  
     drawFunc();
   }  
 
@@ -49,24 +47,20 @@ function createGrid(){
     for(i = 0; i<length;i++){
         grid.removeChild(items[i])
     }
-  }
-function drawFunc(){
+  } 
+
+  function drawFunc(){
 createItems();
 getColor();
     items.forEach(elm => {
-      
-        
-        elm.addEventListener('mouseover', ()=>{
-          
+      elm.addEventListener('mouseover', ()=>{
           getColor();
           if (draw == true){
             elm.style.backgroundColor = `${color}`;
+            
           }
-          else {
-
-          }
-          
-        });
+          else {}
+          });
 
         elm.addEventListener("mouseup",()=>{
           // getValid(false)
@@ -85,20 +79,31 @@ getColor();
 
 function getColor(){
   color = document.querySelector(".color-wheel");
-color = color.value;
+  color = color.value;
+  console.log(color);
+if (eraser == true){
+  color = '#ffffff'
+}
+
+  
+
+
 return color
 
 }
  
-//  function getValid(draw){
-//   if (draw == false || draw == true){
-//     draw = draw
-//   }
-//   else {draw = true}
-        
-//         return draw
-//  }
 
+
+eraserBtn.addEventListener('click',()=>{
+  if(eraser == false){
+    eraserBtn.style.backgroundColor = 'yellow'
+    eraser = true
+  }
+  else if(eraser == true){
+    eraserBtn.style.backgroundColor = 'white'
+    eraser = false
+  }
+})
 
   btn.addEventListener('click', createGrid);
 
