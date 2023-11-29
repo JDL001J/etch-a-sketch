@@ -4,7 +4,12 @@
     border: 2px solid black;
     cursor: crosshair;
     display: grid;
-    grid-template-rows: auto;
+ 
+    grid-template-columns:  repeat(auto-fill, minmax(10px, 1fr)) ;
+    grid-template-rows:    repeat(auto-fill, minmax(10px, 1fr)) ;
+   
+    
+    
 }
 
 .container {
@@ -40,8 +45,13 @@ input{
     text-align: center;
 }
 .item{
-    border: 1px solid black;
+    
+    height: 10px;
+    width: 10px;
+    margin: 0;
+    padding: 0;
+    
 }
-.item:hover{
+/* .item:hover{
     background-color: aqua;
-}
+} */
