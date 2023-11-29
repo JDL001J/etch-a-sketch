@@ -2,6 +2,10 @@ grid = document.querySelector('.grid')
 size = document.querySelector(".size");
 btn = document.querySelector('.btn');
 color = document.querySelector(".color-wheel");
+draw = false;
+
+
+
 color.addEventListener("mouseleave", ()=>{
   drawFunc()
  
@@ -53,13 +57,26 @@ getColor();
       
         
         elm.addEventListener('mouseover', ()=>{
-          getColor();
           
-          elm.style.backgroundColor = `${color}`;
+          getColor();
+          if (draw == true){
+            elm.style.backgroundColor = `${color}`;
+          }
+          else {
+
+          }
+          
         });
 
         elm.addEventListener("mouseup",()=>{
-
+          // getValid(false)
+          draw = false
+            
+        })
+        elm.addEventListener("mousedown",()=>{
+          draw = true
+          // getValid(true)
+            
         })
         
       
@@ -73,9 +90,14 @@ return color
 
 }
  
- function getValid(){
-  
- }
+//  function getValid(draw){
+//   if (draw == false || draw == true){
+//     draw = draw
+//   }
+//   else {draw = true}
+        
+//         return draw
+//  }
 
 
   btn.addEventListener('click', createGrid);
