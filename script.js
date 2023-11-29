@@ -1,25 +1,39 @@
 
 
-btn = document.querySelector('.btn');
-color = document.querySelector(".color-wheel");
-eraserBtn = document.querySelector('.eraser');
+
+
+
 draw = false;
-eraser = false;
+rainbowFlag = false
 
 
 
-color.addEventListener("mouseleave", ()=>{
-  drawFunc()
- 
-}
 
-)
 
 
 function createItems(){
   items = document.querySelectorAll('.item');
   return items
 }
+
+function rainbow(){
+  if (rainbowFlag == false){
+    rainbowFlag = true
+  }
+  else if(rainbowFlag == true){
+    rainbowFlag = false
+  }
+
+
+
+    
+
+}
+size = document.querySelector(".size");
+size.addEventListener('change', ()=>{
+  
+  createGrid()
+})
 
 function getSize(){
   grid = document.querySelector('.grid');
@@ -73,14 +87,31 @@ function createGrid(){
           else {}
           });
 
+          // elm.addEventListener('mouseover', ()=>{
+          //   color = document.querySelector(".color-wheel");
+          //   if (rainbowFlag == true ){
+          //     random = Math.floor(Math.random()*16777215).toString(16);
+          //       color.value = random;
+          //     elm.style.backgroundColor = `${color.value}`;
+            
+          //   }
+          //   else {
+          //     console.log(draw);
+          //     console.log(rainbowFlag)
+             
+          //   }
+          //   });
+
+         
+
         elm.addEventListener("mouseup",()=>{
-          // getValid(false)
+          
           draw = false
             
         })
         elm.addEventListener("mousedown",()=>{
           draw = true
-          // getValid(true)
+          
             
         })
         
@@ -100,35 +131,40 @@ function clearGrid(){
 function getColor(){
   color = document.querySelector(".color-wheel");
   color = color.value;
-  console.log(color);
-if (eraser == true){
-  color = '#ffffff'
-}
-
-  
-
-
+ 
 return color
 
 }
  
 
 
+
+eraserBtn = document.querySelector('.eraser');
+
+
 eraserBtn.addEventListener('click',()=>{
-  if(eraser == false){
-    eraserBtn.style.backgroundColor = 'yellow'
-    eraser = true
-  }
-  else if(eraser == true){
-    eraserBtn.style.backgroundColor = 'white'
-    eraser = false
-  }
+ 
+  color = document.querySelector(".color-wheel");
+  color.value = '#ffffff'
+
 })
 
-  btn.addEventListener('click', createGrid);
+
+// btn = document.querySelector('.btn');
+
+// btn.addEventListener('click', createGrid);
+
   clear = document.querySelector('.clear');
   clear.addEventListener('click', ()=> {
     clearGrid()
   })
 
+rainbowBtn = document.querySelector('.rainbow');
+rainbowBtn.addEventListener("click", ()=>{
+  rainbow();
+  
+})
+  
+  
+  
   createGrid()
