@@ -54,7 +54,12 @@ getColor();
         
         elm.addEventListener('mouseover', ()=>{
           getColor();
+          
           elm.style.backgroundColor = `${color}`;
+        });
+
+        elm.addEventListener("mouseup",()=>{
+
         })
         
       
@@ -68,7 +73,9 @@ return color
 
 }
  
- 
+ function getValid(){
+  
+ }
 
 
   btn.addEventListener('click', createGrid);
