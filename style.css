@@ -68,3 +68,7 @@ input{
 /* .item:hover{
     background-color: aqua;
 } */
+
+.grid-lines {
+    border: 1px solid black;
+}

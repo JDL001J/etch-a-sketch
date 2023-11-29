@@ -4,8 +4,8 @@
 
 
 draw = false;
-rainbowFlag = false
-
+rainbowFlag = false;
+gridLines = false;
 
 
 
@@ -23,17 +23,10 @@ function rainbow(){
   else if(rainbowFlag == true){
     rainbowFlag = false
   }
-
-
-
-    
-
 }
-size = document.querySelector(".size");
-size.addEventListener('change', ()=>{
-  
-  createGrid()
-})
+
+
+
 
 function getSize(){
   grid = document.querySelector('.grid');
@@ -102,7 +95,7 @@ function createGrid(){
           //   }
           //   });
 
-         
+       
 
         elm.addEventListener("mouseup",()=>{
           
@@ -110,6 +103,7 @@ function createGrid(){
             
         })
         elm.addEventListener("mousedown",()=>{
+          elm.style.backgroundColor = `${color}`;
           draw = true
           
             
@@ -137,34 +131,60 @@ return color
 }
  
 
+function toggleGridLines(){
+  if (gridLines == false){
+    createItems();
+    items.forEach(elm =>{
+      elm.style.border = '1px solid black'
+    })
+    gridLines = true
+  }
+  else if(gridLines == true){
+    createItems();
+    items.forEach(elm =>{
+      elm.style.border = 'none'
+    })
+    gridLines = false
+
+  }
+}
 
 
-eraserBtn = document.querySelector('.eraser');
 
-
-eraserBtn.addEventListener('click',()=>{
- 
-  color = document.querySelector(".color-wheel");
-  color.value = '#ffffff'
-
+size = document.querySelector(".size");
+size.addEventListener('change', ()=>{
+  gridLines = false;
+  createGrid()
 })
 
 
-// btn = document.querySelector('.btn');
+gridBtn = document.querySelector(".lines");
+gridBtn.addEventListener('click',()=>{
+ toggleGridLines()
+} )
 
-// btn.addEventListener('click', createGrid);
+
+eraserBtn = document.querySelector('.eraser');
+eraserBtn.addEventListener('click',()=>{
+  color = document.querySelector(".color-wheel");
+  color.value = '#ffffff'
+})
+
+
+
+
 
   clear = document.querySelector('.clear');
   clear.addEventListener('click', ()=> {
     clearGrid()
   })
 
-rainbowBtn = document.querySelector('.rainbow');
-rainbowBtn.addEventListener("click", ()=>{
-  rainbow();
+// rainbowBtn = document.querySelector('.rainbow');
+// rainbowBtn.addEventListener("click", ()=>{
+//   rainbow();
   
-})
+// })
   
   
   
-  createGrid()
+createGrid()
