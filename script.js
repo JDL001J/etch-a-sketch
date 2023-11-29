@@ -1,5 +1,5 @@
-grid = document.querySelector('.grid')
-size = document.querySelector(".size");
+
+
 btn = document.querySelector('.btn');
 color = document.querySelector(".color-wheel");
 eraserBtn = document.querySelector('.eraser');
@@ -22,16 +22,23 @@ function createItems(){
 }
 
 function getSize(){
-    // gridSize = size.value;
-    gridSize = 900;
-    return gridSize
-}
+  grid = document.querySelector('.grid');
+  size = document.querySelector(".size");
+  
+    gridSize = size.value;
+    if (gridSize >= 2 || gridSize <= 100){
+      grid.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+      grid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+      return gridSize
+    }
+  }
+
 
 
 function createGrid(){
     deleteGrid();
     gridSize = getSize();
-  for(i = 0; i<gridSize; i++){
+  for(i = 0; i<gridSize*gridSize; i++){
     div = document.createElement('div');
     div.classList.add("item");
    
@@ -39,6 +46,8 @@ function createGrid(){
   }  
     drawFunc();
   }  
+
+
 
   function deleteGrid(){
     
@@ -49,10 +58,12 @@ function createGrid(){
     }
   } 
 
+
+
   function drawFunc(){
-createItems();
-getColor();
-    items.forEach(elm => {
+      createItems();
+        getColor();
+          items.forEach(elm => {
       elm.addEventListener('mouseover', ()=>{
           getColor();
           if (draw == true){
@@ -76,6 +87,15 @@ getColor();
       
     });
   };
+
+function clearGrid(){
+  createItems();
+  items.forEach(elm => {
+    elm.style.backgroundColor = '#ffffff'
+  })
+
+}
+
 
 function getColor(){
   color = document.querySelector(".color-wheel");
@@ -106,5 +126,9 @@ eraserBtn.addEventListener('click',()=>{
 })
 
   btn.addEventListener('click', createGrid);
+  clear = document.querySelector('.clear');
+  clear.addEventListener('click', ()=> {
+    clearGrid()
+  })
 
   createGrid()
