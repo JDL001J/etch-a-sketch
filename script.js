@@ -25,7 +25,19 @@ function rainbow(){
   }
 }
 
+function fillGrid(){
+  fill = document.querySelector(".fill-wheel");
+  color = fill.value
+  createItems();
+  items.forEach(elm =>{
+   
+      elm.style.backgroundColor = `${color}`
+      console.log(color)
+    
 
+  })
+  console.log(color)
+}
 
 
 function getSize(){
@@ -170,7 +182,10 @@ eraserBtn.addEventListener('click',()=>{
   color.value = '#ffffff'
 })
 
-
+fill = document.querySelector('.fill-wheel');
+fill.addEventListener('change', ()=>
+{fillGrid()}
+)
 
 
 

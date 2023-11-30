@@ -18,13 +18,13 @@ body{
 }
 
 .container {
-    border: 2px solid black;
+    
     height: 100vh;
     padding: 0;
     margin: 0;
     
 }
-h2{
+h1{
     text-align: center;
     color: white;
 }
@@ -33,6 +33,22 @@ h2{
     display: flex;
    justify-content: center;
 }
+
+.color-box, .number-box, .fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 4px;
+}
+
+input{
+    margin-top: 3px;
+}
+
+
+
+
 
 .settings {
     height: 500px;
@@ -71,4 +87,12 @@ input{
 
 .grid-lines {
     border: 1px solid black;
+}
+
+input{
+    width: 70px;
+}
+
+.size{
+    width: 70px;
 }
