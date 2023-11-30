@@ -7,7 +7,7 @@ draw = false;
 rainbowFlag = false;
 gridLines = false;
 
-
+showData()
 
 
 
@@ -16,14 +16,14 @@ function createItems(){
   return items
 }
 
-function rainbow(){
-  if (rainbowFlag == false){
-    rainbowFlag = true
-  }
-  else if(rainbowFlag == true){
-    rainbowFlag = false
-  }
-}
+// function rainbow(){
+//   if (rainbowFlag == false){
+//     rainbowFlag = true
+//   }
+//   else if(rainbowFlag == true){
+//     rainbowFlag = false
+//   }
+// }
 
 function fillGrid(){
   fill = document.querySelector(".fill-wheel");
@@ -55,6 +55,7 @@ function getSize(){
 
 
 function createGrid(){
+
     deleteGrid();
     gridSize = getSize();
   for(i = 0; i<gridSize*gridSize; i++){
@@ -75,6 +76,7 @@ function createGrid(){
     for(i = 0; i<length;i++){
         grid.removeChild(items[i])
     }
+    saveData()
   } 
 
 
@@ -123,6 +125,7 @@ function createGrid(){
         
       
     });
+    saveData()
   };
 
 function clearGrid(){
@@ -130,7 +133,7 @@ function clearGrid(){
   items.forEach(elm => {
     elm.style.backgroundColor = '#ffffff'
   })
-
+saveData()
 }
 
 
@@ -159,6 +162,7 @@ function toggleGridLines(){
     gridLines = false
 
   }
+  saveData()
 }
 
 
@@ -203,3 +207,17 @@ fill.addEventListener('change', ()=>
   
   
 createGrid()
+
+
+grid = document.querySelector('.grid')
+
+
+function saveData(){
+  grid = document.querySelector('.grid')
+  localStorage.setItem("data", grid.innerHTML)
+  
+}
+function showData(){
+  grid = document.querySelector('.grid')
+  grid.innerHTML = localStorage.getItem("data")
+}
